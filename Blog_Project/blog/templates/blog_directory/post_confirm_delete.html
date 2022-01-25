@@ -1,0 +1,22 @@
+{%extends "blog_directory/base.html"%} <!--inherits from base.html-->
+<!-- this not needed here {%load crispy_forms_tags%} <!--see settings.py installed apps, this allows us to use the crispy filter on any of our forms-->
+{%block content%}
+    <div class="content-section">
+        <form method="POST">
+            {%csrf_token%} <!--Mandatory for all forms. its a security token-->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="color: red;">Delete Post
+                </legend>
+                <p class="font-weight-bold" style="color: black;">ARE YOU SURE?</p>
+                <p style="color: black;">{{object.title}}</p>
+               <!--No form used for this html file, will just comment it out {{form|crispy}} <!--vertical bar "|" specifies the use of a filter-->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Delete
+                </button>
+                <a class="btn btn-outline-secondary" href="{%url 'post-detail' object.id%}">Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+{%endblock content%}

@@ -1,0 +1,26 @@
+{%extends "blog_directory/base.html"%} <!--inherits from base.html-->
+{%load crispy_forms_tags%}
+{%block content%}
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}"> <!--Not sure but i think "user.profile.image.url" is django built-in code to retrieve images uploaded by a user-->
+            <div class="media-body">
+                <h3><i>{{user.username}}</i></h3>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data"> <!--encoding type "multipart/form-data" this is needed so that the updated image is saved in the background-->
+            {%csrf_token%} <!--Mandatory for all forms. its a security token-->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Info
+                </legend>
+                {{uform|crispy}} <!--vertical bar "|" specifies the use of a filter, in this case its "crispy"-->
+                {{pform|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update Profile
+                </button>
+            </div>
+        </form>
+    </div>
+{%endblock content%}

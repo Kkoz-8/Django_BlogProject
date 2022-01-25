@@ -1,0 +1,23 @@
+{%extends "blog_directory/base.html"%} <!--inherits from base.html-->
+{%load crispy_forms_tags%} <!--see settings.py installed apps, this allows us to use the crispy filter on any of our forms-->
+{%block content%}
+    <div class="content-section">
+        <form method="POST">
+            {%csrf_token%} <!--Mandatory for all forms. its a security token-->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login
+                </legend>
+                {{form|crispy}} <!--vertical bar "|" specifies the use of a filter-->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login
+                </button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Need An Account? <a class = "ml-2" href="{%url 'users-register'%}">Register <!--here 'users-register' is the name given to the url pattern in "urls.py" in "Blog_Project"-->
+            </a>
+            </small>
+        </div>
+    </div>
+{%endblock content%}
