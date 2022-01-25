@@ -1,7 +1,7 @@
 # Django_BlogProject
 
 A Simple Blog Web Application where users can create, edit and post messages. 
-The home page displays the messagges ordered by most recent. 
+The home page displays the messages ordered by most recent. 
 
 Created using CSS, HTML, Bootstrap, Javascript, along with the Django Python library. 
 
